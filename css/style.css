@@ -128,6 +128,11 @@ a {
   padding: 10px;
 }
 
+#topContacts, a {
+  display: inherit;
+  text-decoration: underline;
+}
+
 .flex-item {
   display: inline-block;
 }
