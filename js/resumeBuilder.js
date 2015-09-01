@@ -15,8 +15,8 @@ var bio = {
   "welcomeMessage": "This is my bio - enjoy!",
   "skills": skills,
   "biopic": "./images/Alex-Thumb.jpg\" alt=\"Bio Pic",
-  display: function() {}
-};
+  "display": {}
+}
 
 //Replaces html help text with object strings and appends to appropriate site section
 bio.display = function () {
@@ -75,8 +75,8 @@ var work = {
       "description": "As a Business Analyst working in the Portals and Collaboration group, my responsibilities include: <ul><li>Defining, documenting and implementing processes within the Microsoft suite of products including Microsoft Office SharePoint Server 2007/2010.</li> <li>Installation and configuration of SharePoint Portal and SharePoint Services.</li> <li>Conduct acceptance testing and train customer resources to successfully administer and maintain implemented software.</li> <li>Evaluate business process and recommending improvements.</li> <li>Evaluate new technologies and utilize the appropriate elements to achieve client results.</li>"
     }
   ],
-  display: function() {}
-};
+  "display": {}
+}
 
 //Replaces html help text with object strings and appends to appropriate site section
 work.display = function() {
@@ -111,23 +111,23 @@ var projects = {
       "title": "HSE KPI Reporting Team Site",
       "dates": "2013-2014",
       "description": "As a BA/PM & developer, I created an HSE KPI reporting site (on SharePoint 2013) for all HSE groups across the organization to collaborate on and meet Vermilion’s key HSE goal. Key benefits include:<ul><li>Aligned to support Vermilion’s key overall HSE goal </li><li>Supports HSE KPI reporting process from HSE Advisor input all the way to corporate </li><li>Easy publishing of KPI rollup information to web pages via Microsoft Excel Services</li></ul>",
-      "images": []//"./images/197x148.gif"]
+      "images": []
     },
     {
       "title": "Online Well Status Form",
       "dates": "2013-2014",
       "description": "As the technical lead, I created an online well status form (on SharePoint 2013) for the Canadian business unit (includes foremans and field admins), measurements, production and joint venture accounting. This solution provides the following key benefits:<ul><li>Streamlines the entire process in documenting the change in well status between all parties</li><li>Centrally managed and accessed by all parties</li><li>Supports auditability by storing versions of each hand-off</li></ul>",
-      "images": []//"./images/197x148.gif"]
+      "images": []
     },
     {
       "title": "Online Travel Request Management Solution",
       "dates": "2013-2014",
       "description": "As a BA/PM & developer, I created and online travel request management solution (on SharePoint 2013) for the travel team, executive assistants group, and Vermilion employee travellers. This solution provides the following key benefits:<ul><li>Streamlines travel requests and approvals (on Vermilion's intranet)</li><li>Assists to reconcile accounting and budget issues via auto generation of accounting codes</li><li>Centrally accessible from the intranets \"My Travel Requests\" dashboard</li></ul>",
-      "images": []//"./images/197x148.gif"]
+      "images": []
     }
   ],
-  display: function() {}
-};
+  "display": {}
+}
 
 //Replaces html help text with object strings and appends to appropriate site section
 projects.display = function () {
@@ -181,8 +181,8 @@ var education = {
     2016,
     "http://www.udacity.com"
   ],
-  display: function() {}
-};
+  "display": {}
+}
 
 //Replaces html help text with object strings and appends to appropriate site section
 education.display = function () {
