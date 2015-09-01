@@ -1,5 +1,7 @@
+//Array of my skillset
 var skills = ["HTML", "CSS", "Javascript", "jQuery", "Business Analysis"];
 
+//bio object
 var bio = {
   "name": "Alex Rosa",
   "role": "Web Front End Ninja",
@@ -16,16 +18,17 @@ var bio = {
   display: function() {}
 };
 
+//Replaces html help text with object strings and appends to appropriate site section
 bio.display = function () {
   var formattedName = HTMLheaderName.replace("%data%", bio.name);
   var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
   $("#header").prepend(formattedName + formattedRole);
   var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
   var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-  var formattedGitHub = HTMLgithub.replace("%data%", '<a href="https://github.com/arosa81" target="_blank">' + bio.contacts.github + '</a>');
-  var formattedTwitter = HTMLtwitter.replace("%data%", '<a href="https://github.com/arosa81" target="_blank">' + bio.contacts.twitter + '</a>');
+  var formattedGitHub = HTMLgithub.replace("%data%", bio.contacts.github);
+  var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
   var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-  var formattedBioMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+  var formattedBioMessage = HTMLwelcomeMsg.replace("%data%", "<br>" + bio.welcomeMessage);
   var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
 
   $("#topContacts").append(formattedMobile + formattedEmail + formattedGitHub + formattedTwitter + formattedLocation);
@@ -40,8 +43,21 @@ bio.display = function () {
   }
 };
 
-bio.display();
+//Inject links into work hyperlink elements
+bio.addLinks = function() {
+  $("span:contains('" + bio.contacts.github + "')").wrapInner('<a></a>')
+  $("a:contains('" + bio.contacts.github + "')").attr({
+    href: 'https://github.com/arosa81',
+    target: '_blank'
+  });
+  $("span:contains('" + bio.contacts.twitter + "')").wrapInner('<a></a>')
+  $("a:contains('" + bio.contacts.twitter + "')").attr({
+    href: 'https://twitter.com/AlexJRosa',
+    target: '_blank'
+  });
+};
 
+//work object
 var work = {
   "jobs": [
     {
@@ -49,19 +65,20 @@ var work = {
       "title": "CEO, Senior Business Analyst",
       "location": "Calgary, AB, Canada",
       "dates": "2012-present",
-      "description": "Technical business analyst"
+      "description": "<p>Alex is a thoughtful Technical Business Analyst that enjoys solving problems and providing value added solutions. For over 7 years Alex has been involved in designing and implementing a broad range of information management solutions in the oil & gas and other industries. <br><br> He has worked on numerous initiatives such as:</p> <ul><li>Multilingual global Intranet leveraging SharePoint 2013 and various web technologies (JQuery, CSS, HTML, Web forms and workflows)</li> <li>Development of strategic road maps for adopting a successful ECM solution across the organization</li> <li>Elicit business requirements and analyze business processes to design. Translating them into technically implementable business solutions</li> <li>Data and document migrations</li> <li>Automation of business processes on the SharePoint 2010/2013 platform using web forms and workflows.</li></ul> <br><br><p>Much of his success as a consultant is not only in gaining an understanding of how technology and the business can fit together, but in taking an open, humble, and inclusive approach with clients and managing their business needs.</p>"
     },
     {
       "employer": "Ideaca",
       "title": "SharePoint Business Analyst",
       "location": "Calgary, AB, Canada",
       "dates": "2010-2012",
-      "description": "SharePoint business analyst"
+      "description": "As a Business Analyst working in the Portals and Collaboration group, my responsibilities include: <ul><li>Defining, documenting and implementing processes within the Microsoft suite of products including Microsoft Office SharePoint Server 2007/2010.</li> <li>Installation and configuration of SharePoint Portal and SharePoint Services.</li> <li>Conduct acceptance testing and train customer resources to successfully administer and maintain implemented software.</li> <li>Evaluate business process and recommending improvements.</li> <li>Evaluate new technologies and utilize the appropriate elements to achieve client results.</li>"
     }
   ],
   display: function() {}
 };
 
+//Replaces html help text with object strings and appends to appropriate site section
 work.display = function() {
   for (var job in work.jobs) {
     $("#workExperience").append(HTMLworkStart);
@@ -75,32 +92,44 @@ work.display = function() {
   }
 };
 
-work.display();
+//Inject links into work hyperlink elements
+work.addLinks = function() {
+  for (var job in work.jobs) {
+    if (work.jobs.hasOwnProperty(job)) {
+      $("a:contains('" + work.jobs[job].employer + " - " + work.jobs[job].title + "')").attr({
+        href: 'https://ca.linkedin.com/pub/alex-rosa/13/500/49',
+        target: '_blank'
+      });
+    }
+  }
+};
 
+//projects object
 var projects = {
   "project": [
     {
       "title": "HSE KPI Reporting Team Site",
       "dates": "2013-2014",
-      "description": "As a BA/PM & developer, I created an HSE KPI reporting site (on SharePoint 2013) for all HSE groups across the organization to collaborate on and meet Vermilion’s key HSE goal. Key benefits include: <br> •	Aligned to support Vermilion’s key overall HSE goal <br> •	Supports HSE KPI reporting process from HSE Advisor input all the way to corporate <br> •	Easy publishing of KPI rollup information to web pages via Microsoft Excel Services",
+      "description": "As a BA/PM & developer, I created an HSE KPI reporting site (on SharePoint 2013) for all HSE groups across the organization to collaborate on and meet Vermilion’s key HSE goal. Key benefits include:<ul><li>Aligned to support Vermilion’s key overall HSE goal </li><li>Supports HSE KPI reporting process from HSE Advisor input all the way to corporate </li><li>Easy publishing of KPI rollup information to web pages via Microsoft Excel Services</li></ul>",
       "images": []//"./images/197x148.gif"]
     },
     {
       "title": "Online Well Status Form",
       "dates": "2013-2014",
-      "description": "As the technical lead, I created and online well status form (on SharePoint 2013) for the Canadian business unit (includes foremans and field admins), measurements, production and joint venture accounting. This solution provides the following key benefits: <br> •	Streamlines the entire process in documenting the change in well status between all parties <br> •	Centrally managed and accessed by all parties <br> •	Supports auditability by storing versions of each hand-off",
+      "description": "As the technical lead, I created an online well status form (on SharePoint 2013) for the Canadian business unit (includes foremans and field admins), measurements, production and joint venture accounting. This solution provides the following key benefits:<ul><li>Streamlines the entire process in documenting the change in well status between all parties</li><li>Centrally managed and accessed by all parties</li><li>Supports auditability by storing versions of each hand-off</li></ul>",
       "images": []//"./images/197x148.gif"]
     },
     {
       "title": "Online Travel Request Management Solution",
       "dates": "2013-2014",
-      "description": "As a BA/PM & developer, I created and online travel request management solution (on SharePoint 2013) for the travel team, executive assistants group, and Vermilion employee travellers. This solution provides the following key benefits: <br> •	Streamlines travel requests and approvals (on Vermilion's intranet) <br> •	Assists to reconcile accounting and budget issues via auto generation of accounting codes <br> •	Centrally accessible from the intranets \"My Travel Requests\" dashboard",
+      "description": "As a BA/PM & developer, I created and online travel request management solution (on SharePoint 2013) for the travel team, executive assistants group, and Vermilion employee travellers. This solution provides the following key benefits:<ul><li>Streamlines travel requests and approvals (on Vermilion's intranet)</li><li>Assists to reconcile accounting and budget issues via auto generation of accounting codes</li><li>Centrally accessible from the intranets \"My Travel Requests\" dashboard</li></ul>",
       "images": []//"./images/197x148.gif"]
     }
   ],
   display: function() {}
 };
 
+//Replaces html help text with object strings and appends to appropriate site section
 projects.display = function () {
   for (var proj in projects.project) {
     $("#projects").append(HTMLprojectStart);
@@ -113,14 +142,25 @@ projects.display = function () {
   }
 };
 
-projects.display();
+//Inject links into projects hyperlink elements
+projects.addLinks = function () {
+  for (var proj in projects.project) {
+    if (projects.project.hasOwnProperty(proj)) {
+      $("a:contains('" + projects.project[proj].title + "')").attr({
+        href: 'https://ca.linkedin.com/pub/alex-rosa/13/500/49',
+        target: '_blank'
+      });
+    }
+  }
+};
 
+//education object
 var education = {
   "schools": [
     {
       "name": "Udacity",
       "location": "2465 Latham Street 3rd Floor, Mountain View, CA",
-      "degree": "Nano Degree",
+      "degree": "Front-End Web Developer Nanodegree",
       "majors": ["Front End Web Developer"],
       "dates": 2015,
       "url": "Online course to front end web development"
@@ -144,6 +184,7 @@ var education = {
   display: function() {}
 };
 
+//Replaces html help text with object strings and appends to appropriate site section
 education.display = function () {
   for (var school in education.schools) {
     if (education.schools.hasOwnProperty(school))
@@ -163,12 +204,42 @@ education.display = function () {
   var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[1]);
   var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[3]);
   var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[4]);
-  $(formattedOnlineURL).attr('href', 'http://www.udacity.com');
   $(".education-entry:last").append(formattedOnlineTitle + formattedOnlineSchool + formattedOnlineDates + formattedOnlineURL);
 };
 
-education.display();
+//Inject links into education hyperlink elements
+education.addLinks = function() {
+  for (var school in education.schools) {
+    if (education.schools.hasOwnProperty(school)) {
+      switch (education.schools[school].degree) {
+        case "Bachelors of Applied Information Technology":
+          $("a:contains('" + education.schools[school].name + " -- " + education.schools[school].degree + "')").attr({
+            href: 'http://www.sait.ca/',
+            target: '_blank'
+          });
+          break;
+        case "Front-End Web Developer Nanodegree":
+          $("a:contains('" + education.schools[school].name + " -- " + education.schools[school].degree + "')").attr({
+            href: 'https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001',
+            target: '_blank'
+          });
+          break;
+        default:
+          break;
+      }
+    }
+  }
+  $("a:contains('" + education.onlineCourses[0] + "')").attr({
+    href: 'http://www.udacity.com',
+    target: '_blank'
+  });
+  $("a:contains('" + education.onlineCourses[4] + "')").attr({
+    href: 'http://www.udacity.com',
+    target: '_blank'
+  });
+};
 
+//Formats my name to international standards
 function inName(formattedName) {
   formattedName = formattedName.trim().split(" ");
   formattedName[0] = formattedName[0].slice(0, 1).toUpperCase() + formattedName[0].slice(1).toLowerCase();
@@ -177,6 +248,18 @@ function inName(formattedName) {
   return fullName;
 }
 
-$("#main").append(internationalizeButton);
+//Appends map and internationalize Button
+function displayMapIntlButton() {
+  $("#main").append(internationalizeButton);
+  $("#mapDiv").append(googleMap);
+}
 
-$("#mapDiv").append(googleMap);
+bio.display();
+work.display();
+projects.display();
+education.display();
+bio.addLinks();
+work.addLinks();
+projects.addLinks();
+education.addLinks();
+displayMapIntlButton();
