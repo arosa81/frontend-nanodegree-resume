@@ -1,6 +1,3 @@
-//Array of my skillset
-var skills = ["HTML", "CSS", "Javascript", "jQuery", "Business Analysis"];
-
 //bio object
 var bio = {
   "name": "Alex Rosa",
@@ -13,10 +10,9 @@ var bio = {
     "location": "Calgary, AB, Canada"
   },
   "welcomeMessage": "This is my bio - enjoy!",
-  "skills": skills,
+  "skills": ["HTML", "CSS", "Javascript", "jQuery", "Business Analysis"],
   "biopic": "./images/Alex-Thumb.jpg\" alt=\"Bio Pic",
-  "display": {}
-}
+};
 
 //Replaces html help text with object strings and appends to appropriate site section
 bio.display = function () {
@@ -31,26 +27,24 @@ bio.display = function () {
   var formattedBioMessage = HTMLwelcomeMsg.replace("%data%", "<br>" + bio.welcomeMessage);
   var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
 
-  $("#topContacts").append(formattedMobile + formattedEmail + formattedGitHub + formattedTwitter + formattedLocation);
-  $("#footerContacts").append(formattedMobile + formattedEmail + formattedGitHub + formattedTwitter + formattedLocation);
+  $("#topContacts, #footerContacts").append(formattedMobile + formattedEmail + formattedGitHub + formattedTwitter + formattedLocation);
+  // $("").append(formattedMobile + formattedEmail + formattedGitHub + formattedTwitter + formattedLocation);
   $("#header").append(formattedBioPic + formattedBioMessage);
 
-  if (skills.length > -1) {
+  if (bio.skills.length) {
     $("#header").append(HTMLskillsStart);
-    for (var i = 0; i < skills.length; i++) {
-      $("#header").append(HTMLskills.replace("%data%", skills[i]));
+    for (var i = 0; i < bio.skills.length; i++) {
+      $("#header").append(HTMLskills.replace("%data%", bio.skills[i]));
     }
   }
-};
 
-//Inject links into work hyperlink elements
-bio.addLinks = function() {
+  //Inject links into work hyperlink elements
   $("span:contains('" + bio.contacts.github + "')").wrapInner('<a></a>')
   $("a:contains('" + bio.contacts.github + "')").attr({
     href: 'https://github.com/arosa81',
     target: '_blank'
   });
-  $("span:contains('" + bio.contacts.twitter + "')").wrapInner('<a></a>')
+  $("span:contains('" + bio.contacts.twitter + "')").wrapInner('<a></a>');
   $("a:contains('" + bio.contacts.twitter + "')").attr({
     href: 'https://twitter.com/AlexJRosa',
     target: '_blank'
@@ -75,12 +69,11 @@ var work = {
       "description": "As a Business Analyst working in the Portals and Collaboration group, my responsibilities include: <ul><li>Defining, documenting and implementing processes within the Microsoft suite of products including Microsoft Office SharePoint Server 2007/2010.</li> <li>Installation and configuration of SharePoint Portal and SharePoint Services.</li> <li>Conduct acceptance testing and train customer resources to successfully administer and maintain implemented software.</li> <li>Evaluate business process and recommending improvements.</li> <li>Evaluate new technologies and utilize the appropriate elements to achieve client results.</li>"
     }
   ],
-  "display": {}
-}
+};
 
 //Replaces html help text with object strings and appends to appropriate site section
 work.display = function() {
-  for (var job in work.jobs) {
+  for (var job=0; job < work.jobs.length; job++) {
     $("#workExperience").append(HTMLworkStart);
     var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
     var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
@@ -89,18 +82,12 @@ work.display = function() {
     var formattedWorkDesc = HTMLworkDescription.replace("%data%", work.jobs[job].description);
     $(".work-entry:last").append(formattedEmployer + formattedWorkTitle +
       formattedWorkLocation + formattedWorkDates + formattedWorkDesc);
-  }
-};
 
-//Inject links into work hyperlink elements
-work.addLinks = function() {
-  for (var job in work.jobs) {
-    if (work.jobs.hasOwnProperty(job)) {
-      $("a:contains('" + work.jobs[job].employer + " - " + work.jobs[job].title + "')").attr({
-        href: 'https://ca.linkedin.com/pub/alex-rosa/13/500/49',
-        target: '_blank'
-      });
-    }
+    //Inject links into work hyperlink elements
+    $("a:contains('" + work.jobs[job].employer + " - " + work.jobs[job].title + "')").attr({
+      href: 'https://ca.linkedin.com/pub/alex-rosa/13/500/49',
+      target: '_blank'
+    });
   }
 };
 
@@ -126,12 +113,11 @@ var projects = {
       "images": []
     }
   ],
-  "display": {}
-}
+};
 
 //Replaces html help text with object strings and appends to appropriate site section
 projects.display = function () {
-  for (var proj in projects.project) {
+  for (var proj=0; proj<projects.project.length; proj++) {
     $("#projects").append(HTMLprojectStart);
     var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.project[proj].title);
     var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.project[proj].dates);
@@ -139,18 +125,12 @@ projects.display = function () {
     var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.project[proj].images);
     $(".project-entry:last").append(formattedProjectTitle + "<br>" + formattedProjectDates + "<br>" +
       formattedProjectDesc + "<br>" + formattedProjectImage);
-  }
-};
 
-//Inject links into projects hyperlink elements
-projects.addLinks = function () {
-  for (var proj in projects.project) {
-    if (projects.project.hasOwnProperty(proj)) {
-      $("a:contains('" + projects.project[proj].title + "')").attr({
-        href: 'https://ca.linkedin.com/pub/alex-rosa/13/500/49',
-        target: '_blank'
-      });
-    }
+    //Inject links into work hyperlink elements
+    $("a:contains('" + projects.project[proj].title + "')").attr({
+      href: 'https://ca.linkedin.com/pub/alex-rosa/13/500/49',
+      target: '_blank'
+    });
   }
 };
 
@@ -181,23 +161,38 @@ var education = {
     2016,
     "http://www.udacity.com"
   ],
-  "display": {}
-}
+};
 
 //Replaces html help text with object strings and appends to appropriate site section
 education.display = function () {
-  for (var school in education.schools) {
-    if (education.schools.hasOwnProperty(school))
-    {
-      $("#education").append(HTMLschoolStart);
-      var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
-      var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-      var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
-      var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-      var formattedSchoolDate = HTMLschoolDates.replace("%data%", education.schools[school].dates);
-      $(".education-entry:last").append(formattedSchoolName + formattedSchoolDegree + formattedSchoolDate + formattedSchoolLocation +     formattedSchoolMajor);
+  for (var school=0; school<education.schools.length; school++) {
+    $("#education").append(HTMLschoolStart);
+    var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+    var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+    var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
+    var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+    var formattedSchoolDate = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+    $(".education-entry:last").append(formattedSchoolName + formattedSchoolDegree + formattedSchoolDate + formattedSchoolLocation + formattedSchoolMajor);
+
+    switch (education.schools[school].degree) {
+      case "Bachelors of Applied Information Technology":
+        $("a:contains('" + education.schools[school].name + " -- " + education.schools[school].degree + "')").attr({
+          href: 'http://www.sait.ca/',
+          target: '_blank'
+        });
+        break;
+      case "Front-End Web Developer Nanodegree":
+        $("a:contains('" + education.schools[school].name + " -- " + education.schools[school].degree + "')").attr({
+          href: 'https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001',
+          target: '_blank'
+        });
+        break;
+      default:
+        break;
     }
   }
+
+  //Adding the online courses section
   $("#education").append(HTMLonlineClasses);
   $("#education").append(HTMLschoolStart);
   var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[0]);
@@ -205,30 +200,8 @@ education.display = function () {
   var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[3]);
   var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[4]);
   $(".education-entry:last").append(formattedOnlineTitle + formattedOnlineSchool + formattedOnlineDates + formattedOnlineURL);
-};
 
-//Inject links into education hyperlink elements
-education.addLinks = function() {
-  for (var school in education.schools) {
-    if (education.schools.hasOwnProperty(school)) {
-      switch (education.schools[school].degree) {
-        case "Bachelors of Applied Information Technology":
-          $("a:contains('" + education.schools[school].name + " -- " + education.schools[school].degree + "')").attr({
-            href: 'http://www.sait.ca/',
-            target: '_blank'
-          });
-          break;
-        case "Front-End Web Developer Nanodegree":
-          $("a:contains('" + education.schools[school].name + " -- " + education.schools[school].degree + "')").attr({
-            href: 'https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001',
-            target: '_blank'
-          });
-          break;
-        default:
-          break;
-      }
-    }
-  }
+  //Inject links into education hyperlink elements
   $("a:contains('" + education.onlineCourses[0] + "')").attr({
     href: 'http://www.udacity.com',
     target: '_blank'
@@ -249,17 +222,10 @@ function inName(formattedName) {
 }
 
 //Appends map and internationalize Button
-function displayMapIntlButton() {
   $("#main").append(internationalizeButton);
   $("#mapDiv").append(googleMap);
-}
 
 bio.display();
 work.display();
 projects.display();
 education.display();
-bio.addLinks();
-work.addLinks();
-projects.addLinks();
-education.addLinks();
-displayMapIntlButton();
