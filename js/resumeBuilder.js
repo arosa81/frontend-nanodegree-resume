@@ -7,7 +7,7 @@ var bio = {
     "email": "alex.j.rosa@gmail.com",
     "github": "arosa81",
     "twitter": "AlexJRosa",
-    "location": "Calgary, AB, Canada"
+    "location": "Calgary, AB, Canada",
   },
   "welcomeMessage": "This is my bio - enjoy!",
   "skills": ["HTML", "CSS", "Javascript", "jQuery", "Business Analysis"],
@@ -15,7 +15,7 @@ var bio = {
 };
 
 //Replaces html help text with object strings and appends to appropriate site section
-bio.display = function () {
+bio.display = function() {
   var formattedName = HTMLheaderName.replace("%data%", bio.name);
   var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
   $("#header").prepend(formattedName + formattedRole);
@@ -28,7 +28,6 @@ bio.display = function () {
   var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
 
   $("#topContacts, #footerContacts").append(formattedMobile + formattedEmail + formattedGitHub + formattedTwitter + formattedLocation);
-  // $("").append(formattedMobile + formattedEmail + formattedGitHub + formattedTwitter + formattedLocation);
   $("#header").append(formattedBioPic + formattedBioMessage);
 
   if (bio.skills.length) {
@@ -39,7 +38,7 @@ bio.display = function () {
   }
 
   //Inject links into work hyperlink elements
-  $("span:contains('" + bio.contacts.github + "')").wrapInner('<a></a>')
+  $("span:contains('" + bio.contacts.github + "')").wrapInner('<a></a>');
   $("a:contains('" + bio.contacts.github + "')").attr({
     href: 'https://github.com/arosa81',
     target: '_blank'
