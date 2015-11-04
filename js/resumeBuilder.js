@@ -221,7 +221,7 @@ function inName(formattedName) {
 }
 
 //Appends map and internationalize Button
-  $("#main").append(internationalizeButton);
+  // $("#main").append(internationalizeButton);
   $("#mapDiv").append(googleMap);
 
 bio.display();
