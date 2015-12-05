@@ -3,10 +3,6 @@
 <head>
   <meta charset="utf-8">
   <title>Resume</title>
-  <link href="css/style.min.css" rel="stylesheet" type="text/css">
-  <script src="js/jQuery.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places,drawing,geometry"></script>
-  <script src="js/helper.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -32,7 +28,11 @@
       </ul>
     </div>
   </div>
-  <script src="./js/resumeBuilder.min.js"></script>
+  <link href="css/style.min.css" rel="stylesheet" type="text/css">
+  <script async src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places,drawing,geometry"></script>
+  <script src="js/jQuery.min.js"></script>
+  <script src="js/helper.js"></script>
+  <script src="./js/resumeBuilder.js"></script>
   <script type="text/javascript">
     if(document.getElementsByClassName('flex-item').length === 0) {
       document.getElementById('topContacts').style.display = 'none';
@@ -56,5 +56,6 @@
       document.getElementById('mapDiv').style.display = 'none';
     }
   </script>
+
 </body>
 </html>
