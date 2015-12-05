@@ -86,7 +86,6 @@ var model = {
 
 var controller = {
   init: function() {
-    this.formatBIO();
     view.init();
   },
   formatBIO: function() {
@@ -100,6 +99,36 @@ var controller = {
     model.bio.formattedBioMessage = HTMLwelcomeMsg.replace("%data%", "<br>" + model.bio.welcomeMessage);
     model.bio.formattedBioPic = HTMLbioPic.replace("%data%", model.bio.biopic);
   },
+  getFormattedName: function() {
+    return model.bio.formattedName;
+  },
+  getFormattedRole: function() {
+    return model.bio.formattedRole;
+  },
+  getFormattedMobile: function() {
+    return model.bio.formattedMobile;
+  },
+  getFormattedEmail: function() {
+    return model.bio.formattedEmail;
+  },
+  getFormattedGitHub: function() {
+    return model.bio.formattedGitHub;
+  },
+  getFormattedTwitter: function() {
+    return model.bio.formattedTwitter;
+  },
+  getFormattedLocation: function() {
+    return model.bio.formattedLocation;
+  },
+  getFormattedBioMessage: function() {
+    return model.bio.formattedBioMessage;
+  },
+  getFormattedBioPic: function() {
+    return model.bio.formattedBioPic;
+  },
+  getSkills: function() {
+    return model.bio.skills;
+  },
   formatWork: function(job) {
     model.work.jobs[job].formattedEmployer = HTMLworkEmployer.replace("%data%", model.work.jobs[job].employer);
     model.work.jobs[job].formattedWorkTitle = HTMLworkTitle.replace("%data%", model.work.jobs[job].title);
@@ -107,11 +136,44 @@ var controller = {
     model.work.jobs[job].formattedWorkDates = HTMLworkDates.replace("%data%", model.work.jobs[job].dates);
     model.work.jobs[job].formattedWorkDesc = HTMLworkDescription.replace("%data%", model.work.jobs[job].description);
   },
+  getFormattedEmployer: function(job) {
+    return model.work.jobs[job].formattedEmployer;
+  },
+  getFormattedWorkTitle: function(job) {
+    return model.work.jobs[job].formattedWorkTitle;
+  },
+  getFormattedWorkLocation: function(job) {
+    return model.work.jobs[job].formattedWorkLocation;
+  },
+  getFormattedWorkDates: function(job) {
+    return model.work.jobs[job].formattedWorkDates;
+  },
+  getFormattedWorkDesc: function(job) {
+    return model.work.jobs[job].formattedWorkDesc;
+  },
+  getJobs: function() {
+    return model.work.jobs;
+  },
   formatProjects: function(proj) {
     model.project.projects[proj].formattedProjectTitle = HTMLprojectTitle.replace("%data%", model.project.projects[proj].title);
     model.project.projects[proj].formattedProjectDates = HTMLprojectDates.replace("%data%", model.project.projects[proj].dates);
     model.project.projects[proj].formattedProjectDesc = HTMLprojectDescription.replace("%data%", model.project.projects[proj].description);
     model.project.projects[proj].formattedProjectImage = HTMLprojectImage.replace("%data%", model.project.projects[proj].images);
+  },
+  getFormattedProjectTitle: function(proj) {
+    return model.project.projects[proj].formattedProjectTitle;
+  },
+  getFormattedProjectDates: function(proj) {
+    return model.project.projects[proj].formattedProjectDates;
+  },
+  getFormattedProjectDesc: function(proj) {
+    return model.project.projects[proj].formattedProjectDesc;
+  },
+  getFormattedProjectImage: function(proj) {
+    return model.project.projects[proj].formattedProjectImage;
+  },
+  getProjects: function() {
+    return model.project.projects;
   },
   formatEducation: function(school) {
     model.education.schools[school].formattedSchoolName = HTMLschoolName.replace("%data%", model.education.schools[school].name);
@@ -120,11 +182,44 @@ var controller = {
     model.education.schools[school].formattedSchoolLocation = HTMLschoolLocation.replace("%data%", model.education.schools[school].location);
     model.education.schools[school].formattedSchoolDate = HTMLschoolDates.replace("%data%", model.education.schools[school].dates);
   },
+  getFormattedSchoolName: function(school) {
+    return model.education.schools[school].formattedSchoolName;
+  },
+  getFormattedSchoolDegree: function(school) {
+    return model.education.schools[school].formattedSchoolDegree;
+  },
+  getFormattedSchoolMajor: function(school) {
+    return model.education.schools[school].formattedSchoolMajor;
+  },
+  getFormattedSchoolLocation: function(school) {
+    return model.education.schools[school].formattedSchoolLocation;
+  },
+  getFormattedSchoolDate: function(school) {
+    return model.education.schools[school].formattedSchoolDate;
+  },
+  getSchools: function() {
+    return model.education.schools;
+  },
   formatOnlineEducation: function(course) {
     model.education.onlineCourses[course].formattedOnlineTitle = HTMLonlineTitle.replace("%data%", model.education.onlineCourses[course].onlineTitle);
     model.education.onlineCourses[course].formattedOnlineSchool = HTMLonlineSchool.replace("%data%", model.education.onlineCourses[course].onlineSchool);
     model.education.onlineCourses[course].formattedOnlineDates = HTMLonlineDates.replace("%data%", model.education.onlineCourses[course].onlineDate);
     model.education.onlineCourses[course].formattedOnlineURL = HTMLonlineURL.replace("%data%", model.education.onlineCourses[course].onlineURL);
+  },
+  getFormattedOnlineTitle: function(course) {
+    return model.education.onlineCourses[course].formattedOnlineTitle;
+  },
+  getFormattedOnlineSchool: function(course) {
+    return model.education.onlineCourses[course].formattedOnlineSchool;
+  },
+  getFormattedOnlineDates: function(course) {
+    return model.education.onlineCourses[course].formattedOnlineDates;
+  },
+  getFormattedOnlineURL: function(course) {
+    return model.education.onlineCourses[course].formattedOnlineURL;
+  },
+  getOnlineSchools: function() {
+    return model.education.onlineCourses;
   }
 };
 
@@ -138,72 +233,79 @@ var view = {
     this.displayMap();
   },
   displayBIO: function() {
-    $("#header").prepend(model.bio.formattedName + model.bio.formattedRole);
-    $("#topContacts, #footerContacts").append(model.bio.formattedMobile + model.bio.formattedEmail + model.bio.formattedGitHub + model.bio.formattedTwitter + model.bio.formattedLocation);
-    $("#header").append(model.bio.formattedBioPic + model.bio.formattedBioMessage);
+    controller.formatBIO();
+    var numSkills = controller.getSkills().length;
 
-    if (model.bio.skills.length) {
+    $("#header").prepend(controller.getFormattedName() + controller.getFormattedRole());
+    $("#topContacts, #footerContacts").append(controller.getFormattedMobile() + controller.getFormattedEmail() + controller.getFormattedGitHub() + controller.getFormattedTwitter() + controller.getFormattedLocation());
+    $("#header").append(controller.getFormattedBioPic() + controller.getFormattedBioMessage());
+
+    if (numSkills) {
       $("#header").append(HTMLskillsStart);
-      for (var i = 0; i < model.bio.skills.length; i++) {
-        $("#header").append(HTMLskills.replace("%data%", model.bio.skills[i]));
+      for (var i = 0; i < numSkills; i++) {
+        $("#header").append(HTMLskills.replace("%data%", controller.getSkills()[i]));
       }
     }
 
     //Inject links into work hyperlink elements
-    $("span:contains('" + model.bio.contacts.github + "')").wrapInner('<a></a>');
-    $("a:contains('" + model.bio.contacts.github + "')").attr({
+    $("span:contains('" + $(controller.getFormattedGitHub()).children('span:last-child').text() + "')").wrapInner('<a></a>');
+    $("a:contains('" + $(controller.getFormattedGitHub()).children('span:last-child').text() + "')").attr({
       href: 'https://github.com/arosa81',
       target: '_blank'
     });
-    $("span:contains('" + model.bio.contacts.twitter + "')").wrapInner('<a></a>');
-    $("a:contains('" + model.bio.contacts.twitter + "')").attr({
+    $("span:contains('" + $(controller.getFormattedTwitter()).children('span:last-child').text() + "')").wrapInner('<a></a>');
+    $("a:contains('" + $(controller.getFormattedTwitter()).children('span:last-child').text() + "')").attr({
       href: 'https://twitter.com/AlexJRosa',
       target: '_blank'
     });
   },
   displayWork: function() {
-    for (var job=0; job < model.work.jobs.length; job++) {
+    var totalJobs = controller.getJobs().length;
+    for (var job=0; job < totalJobs; job++) {
       $("#workExperience").append(HTMLworkStart);
       controller.formatWork(job);
       $("#workExperience").append(HTMLworkStart);
-      $(".work-entry:last").append(model.work.jobs[job].formattedEmployer + model.work.jobs[job].formattedWorkTitle + model.work.jobs[job].formattedWorkLocation + model.work.jobs[job].formattedWorkDates + model.work.jobs[job].formattedWorkDesc);
+      $(".work-entry:last").append(controller.getFormattedEmployer(job) + controller.getFormattedWorkTitle(job) + controller.getFormattedWorkLocation(job) + controller.getFormattedWorkDates(job) + controller.getFormattedWorkDesc(job));
 
       //Inject links into work hyperlink elements
-      $("a:contains('" + model.work.jobs[job].employer + " - " + model.work.jobs[job].title + "')").attr({
+      $("a:contains('" + controller.getJobs()[job].employer + " - " + controller.getJobs()[job].title + "')").attr({
         href: 'https://ca.linkedin.com/pub/alex-rosa/13/500/49',
         target: '_blank'
       });
     }
   },
   displayProjects: function() {
-    for (var proj=0; proj<model.project.projects.length; proj++) {
+    var totalProjects = controller.getProjects().length;
+    for (var proj = 0; proj < totalProjects; proj++) {
       $("#projects").append(HTMLprojectStart);
       controller.formatProjects(proj);
 
-      $(".project-entry:last").append(model.project.projects[proj].formattedProjectTitle + "<br>" + model.project.projects[proj].formattedProjectDates + "<br>" + model.project.projects[proj].formattedProjectDesc + "<br>" + model.project.projects[proj].formattedProjectImage);
+      $(".project-entry:last").append(controller.getFormattedProjectTitle(proj) + "<br>" + controller.getFormattedProjectDates(proj) + "<br>" + controller.getFormattedProjectDesc(proj));
 
       //Inject links into work hyperlink elements
-      $("a:contains('" + model.project.projects[proj].title + "')").attr({
+      $("a:contains('" + controller.getProjects()[proj].title + "')").attr({
         href: 'https://ca.linkedin.com/pub/alex-rosa/13/500/49',
         target: '_blank'
       });
     }
   },
   displayEducation: function() {
-    for (var school = 0; school < model.education.schools.length; school++) {
+    var totalSchools = controller.getSchools().length;
+    for (var school = 0; school < totalSchools; school++) {
       $("#education").append(HTMLschoolStart);
       controller.formatEducation(school);
-      $(".education-entry:last").append(model.education.schools[school].formattedSchoolName + model.education.schools[school].formattedSchoolDegree + model.education.schools[school].formattedSchoolDate + model.education.schools[school].formattedSchoolLocation + model.education.schools[school].formattedSchoolMajor);
 
-      switch (model.education.schools[school].degree) {
+      $(".education-entry:last").append(controller.getFormattedSchoolName(school) + controller.getFormattedSchoolDegree(school) + controller.getFormattedSchoolDate(school) + controller.getFormattedSchoolLocation(school) + controller.getFormattedSchoolMajor(school));
+
+      switch (controller.getSchools()[school].degree) {
         case "Bachelors of Applied Information Technology":
-          $("a:contains('" + model.education.schools[school].name + " -- " + model.education.schools[school].degree + "')").attr({
+          $("a:contains('" + controller.getSchools()[school].name + " -- " + controller.getSchools()[school].degree + "')").attr({
             href: 'http://www.sait.ca/',
             target: '_blank'
           });
           break;
         case "Front-End Web Developer Nanodegree":
-          $("a:contains('" + model.education.schools[school].name + " -- " + model.education.schools[school].degree + "')").attr({
+          $("a:contains('" + controller.getSchools()[school].name + " -- " + controller.getSchools()[school].degree + "')").attr({
             href: 'https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001',
             target: '_blank'
           });
@@ -214,19 +316,20 @@ var view = {
     }
   },
   displayOnlineEducation: function() {
-    for (var course = 0; course < model.education.onlineCourses.length; course++) {
+    var totalOnlineCourses = controller.getOnlineSchools().length;
+    for (var course = 0; course < totalOnlineCourses; course++) {
       $("#education").append(HTMLonlineClasses);
       $("#education").append(HTMLschoolStart);
       controller.formatOnlineEducation(course);
 
-      $(".education-entry:last").append(model.education.onlineCourses[course].formattedOnlineTitle + model.education.onlineCourses[course].formattedOnlineSchool + model.education.onlineCourses[course].formattedOnlineDates + model.education.onlineCourses[course].formattedOnlineURL);
+      $(".education-entry:last").append(controller.getFormattedOnlineTitle(course) + controller.getFormattedOnlineSchool(course) + controller.getFormattedOnlineDates(course) + controller.getFormattedOnlineURL(course));
 
       //Inject links into education hyperlink elements
-      $("a:contains('" + model.education.onlineCourses[course].onlineTitle + "')").attr({
+      $("a:contains('" + controller.getOnlineSchools()[course].onlineTitle + "')").attr({
         href: 'https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001',
         target: '_blank'
       });
-      $("a:contains('" + model.education.onlineCourses[course].onlineURL + "')").attr({
+      $("a:contains('" + controller.getOnlineSchools()[course].onlineURL + "')").attr({
         href: 'http://www.udacity.com',
         target: '_blank'
       });
@@ -235,18 +338,8 @@ var view = {
   },
   displayMap: function() {
     $("#mapDiv").append(googleMap);
+    console.log(model);
   }
 };
 
-//Formats my name to international standards
-// function inName(formattedName) {
-//   formattedName = formattedName.trim().split(" ");
-//   formattedName[0] = formattedName[0].slice(0, 1).toUpperCase() + formattedName[0].slice(1).toLowerCase();
-//   formattedName[1] = formattedName[1].toUpperCase();
-//   var fullName = formattedName.join(" ");
-//   return fullName;
-// }
-
-//Appends map and internationalize Button
-// $("#main").append(internationalizeButton);
 controller.init();
