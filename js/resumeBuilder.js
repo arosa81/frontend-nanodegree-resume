@@ -48,7 +48,7 @@ var model = {
       {
         "title": "Online Travel Request Management Solution",
         "dates": "2013-2014",
-        "description": "As a BA/PM & developer, I created and online travel request management solution (on SharePoint 2013) for the travel team, executive assistants group, and Vermilion employee travellers. This solution provides the following key benefits:<ul><li>Streamlines travel requests and approvals (on Vermilion's intranet)</li><li>Assists to reconcile accounting and budget issues via auto generation of accounting codes</li><li>Centrally accessible from the intranets \"My Travel Requests\" dashboard</li></ul>",
+        "description": "As a BA/PM & developer, I created and online travel request management solution (on SharePoint 2013) for the travel team, executive assistants group, and Vermilion employee travellers. This solution provides the following key benefits:<ul><li>Streamlines travel requests and approvals (on Vermilion's intranetview.initli>Assists to reconcile accounting and budget issues via auto generation of accounting codes</li><li>Centrally accessible from the intranets \"My Travel Requests\" dashboard</li></ul>",
         "images": []
       }
     ],
@@ -87,136 +87,57 @@ var model = {
 var controller = {
   init: function() {
     view.init();
+    this.formatBIO();
+    view.displayBIO();
   },
   formatBIO: function() {
-    model.bio.formattedName = HTMLheaderName.replace("%data%", model.bio.name);
-    model.bio.formattedRole = HTMLheaderRole.replace("%data%", model.bio.role);
-    model.bio.formattedMobile = HTMLmobile.replace("%data%", model.bio.contacts.mobile);
-    model.bio.formattedEmail = HTMLemail.replace("%data%", model.bio.contacts.email);
-    model.bio.formattedGitHub = HTMLgithub.replace("%data%", model.bio.contacts.github);
-    model.bio.formattedTwitter = HTMLtwitter.replace("%data%", model.bio.contacts.twitter);
-    model.bio.formattedLocation = HTMLlocation.replace("%data%", model.bio.contacts.location);
-    model.bio.formattedBioMessage = HTMLwelcomeMsg.replace("%data%", "<br>" + model.bio.welcomeMessage);
-    model.bio.formattedBioPic = HTMLbioPic.replace("%data%", model.bio.biopic);
-  },
-  getFormattedName: function() {
-    return model.bio.formattedName;
-  },
-  getFormattedRole: function() {
-    return model.bio.formattedRole;
-  },
-  getFormattedMobile: function() {
-    return model.bio.formattedMobile;
-  },
-  getFormattedEmail: function() {
-    return model.bio.formattedEmail;
-  },
-  getFormattedGitHub: function() {
-    return model.bio.formattedGitHub;
-  },
-  getFormattedTwitter: function() {
-    return model.bio.formattedTwitter;
-  },
-  getFormattedLocation: function() {
-    return model.bio.formattedLocation;
-  },
-  getFormattedBioMessage: function() {
-    return model.bio.formattedBioMessage;
-  },
-  getFormattedBioPic: function() {
-    return model.bio.formattedBioPic;
+    view.init.formattedName = HTMLheaderName.replace("%data%", model.bio.name);
+    view.init.formattedRole = HTMLheaderRole.replace("%data%", model.bio.role);
+    view.init.formattedMobile = HTMLmobile.replace("%data%", model.bio.contacts.mobile);
+    view.init.formattedEmail = HTMLemail.replace("%data%", model.bio.contacts.email);
+    view.init.formattedGitHub = HTMLgithub.replace("%data%", model.bio.contacts.github);
+    view.init.formattedTwitter = HTMLtwitter.replace("%data%", model.bio.contacts.twitter);
+    view.init.formattedLocation = HTMLlocation.replace("%data%", model.bio.contacts.location);
+    view.init.formattedBioMessage = HTMLwelcomeMsg.replace("%data%", "<br>" + model.bio.welcomeMessage);
+    view.init.formattedBioPic = HTMLbioPic.replace("%data%", model.bio.biopic);
   },
   getSkills: function() {
     return model.bio.skills;
   },
   formatWork: function(job) {
-    model.work.jobs[job].formattedEmployer = HTMLworkEmployer.replace("%data%", model.work.jobs[job].employer);
-    model.work.jobs[job].formattedWorkTitle = HTMLworkTitle.replace("%data%", model.work.jobs[job].title);
-    model.work.jobs[job].formattedWorkLocation = HTMLworkLocation.replace("%data%", model.work.jobs[job].location);
-    model.work.jobs[job].formattedWorkDates = HTMLworkDates.replace("%data%", model.work.jobs[job].dates);
-    model.work.jobs[job].formattedWorkDesc = HTMLworkDescription.replace("%data%", model.work.jobs[job].description);
-  },
-  getFormattedEmployer: function(job) {
-    return model.work.jobs[job].formattedEmployer;
-  },
-  getFormattedWorkTitle: function(job) {
-    return model.work.jobs[job].formattedWorkTitle;
-  },
-  getFormattedWorkLocation: function(job) {
-    return model.work.jobs[job].formattedWorkLocation;
-  },
-  getFormattedWorkDates: function(job) {
-    return model.work.jobs[job].formattedWorkDates;
-  },
-  getFormattedWorkDesc: function(job) {
-    return model.work.jobs[job].formattedWorkDesc;
+    view.init.formattedEmployer = HTMLworkEmployer.replace("%data%", model.work.jobs[job].employer);
+    view.init.formattedWorkTitle = HTMLworkTitle.replace("%data%", model.work.jobs[job].title);
+    view.init.formattedWorkLocation = HTMLworkLocation.replace("%data%", model.work.jobs[job].location);
+    view.init.formattedWorkDates = HTMLworkDates.replace("%data%", model.work.jobs[job].dates);
+    view.init.formattedWorkDesc = HTMLworkDescription.replace("%data%", model.work.jobs[job].description);
   },
   getJobs: function() {
     return model.work.jobs;
   },
   formatProjects: function(proj) {
-    model.project.projects[proj].formattedProjectTitle = HTMLprojectTitle.replace("%data%", model.project.projects[proj].title);
-    model.project.projects[proj].formattedProjectDates = HTMLprojectDates.replace("%data%", model.project.projects[proj].dates);
-    model.project.projects[proj].formattedProjectDesc = HTMLprojectDescription.replace("%data%", model.project.projects[proj].description);
-    model.project.projects[proj].formattedProjectImage = HTMLprojectImage.replace("%data%", model.project.projects[proj].images);
-  },
-  getFormattedProjectTitle: function(proj) {
-    return model.project.projects[proj].formattedProjectTitle;
-  },
-  getFormattedProjectDates: function(proj) {
-    return model.project.projects[proj].formattedProjectDates;
-  },
-  getFormattedProjectDesc: function(proj) {
-    return model.project.projects[proj].formattedProjectDesc;
-  },
-  getFormattedProjectImage: function(proj) {
-    return model.project.projects[proj].formattedProjectImage;
+    view.init.formattedProjectTitle = HTMLprojectTitle.replace("%data%", model.project.projects[proj].title);
+    view.init.formattedProjectDates = HTMLprojectDates.replace("%data%", model.project.projects[proj].dates);
+    view.init.formattedProjectDesc = HTMLprojectDescription.replace("%data%", model.project.projects[proj].description);
+    view.init.formattedProjectImage = HTMLprojectImage.replace("%data%", model.project.projects[proj].images);
   },
   getProjects: function() {
     return model.project.projects;
   },
   formatEducation: function(school) {
-    model.education.schools[school].formattedSchoolName = HTMLschoolName.replace("%data%", model.education.schools[school].name);
-    model.education.schools[school].formattedSchoolDegree = HTMLschoolDegree.replace("%data%", model.education.schools[school].degree);
-    model.education.schools[school].formattedSchoolMajor = HTMLschoolMajor.replace("%data%", model.education.schools[school].majors);
-    model.education.schools[school].formattedSchoolLocation = HTMLschoolLocation.replace("%data%", model.education.schools[school].location);
-    model.education.schools[school].formattedSchoolDate = HTMLschoolDates.replace("%data%", model.education.schools[school].dates);
-  },
-  getFormattedSchoolName: function(school) {
-    return model.education.schools[school].formattedSchoolName;
-  },
-  getFormattedSchoolDegree: function(school) {
-    return model.education.schools[school].formattedSchoolDegree;
-  },
-  getFormattedSchoolMajor: function(school) {
-    return model.education.schools[school].formattedSchoolMajor;
-  },
-  getFormattedSchoolLocation: function(school) {
-    return model.education.schools[school].formattedSchoolLocation;
-  },
-  getFormattedSchoolDate: function(school) {
-    return model.education.schools[school].formattedSchoolDate;
+    view.init.formattedSchoolName = HTMLschoolName.replace("%data%", model.education.schools[school].name);
+    view.init.formattedSchoolDegree = HTMLschoolDegree.replace("%data%", model.education.schools[school].degree);
+    view.init.formattedSchoolMajor = HTMLschoolMajor.replace("%data%", model.education.schools[school].majors);
+    view.init.formattedSchoolLocation = HTMLschoolLocation.replace("%data%", model.education.schools[school].location);
+    view.init.formattedSchoolDate = HTMLschoolDates.replace("%data%", model.education.schools[school].dates);
   },
   getSchools: function() {
     return model.education.schools;
   },
   formatOnlineEducation: function(course) {
-    model.education.onlineCourses[course].formattedOnlineTitle = HTMLonlineTitle.replace("%data%", model.education.onlineCourses[course].onlineTitle);
-    model.education.onlineCourses[course].formattedOnlineSchool = HTMLonlineSchool.replace("%data%", model.education.onlineCourses[course].onlineSchool);
-    model.education.onlineCourses[course].formattedOnlineDates = HTMLonlineDates.replace("%data%", model.education.onlineCourses[course].onlineDate);
-    model.education.onlineCourses[course].formattedOnlineURL = HTMLonlineURL.replace("%data%", model.education.onlineCourses[course].onlineURL);
-  },
-  getFormattedOnlineTitle: function(course) {
-    return model.education.onlineCourses[course].formattedOnlineTitle;
-  },
-  getFormattedOnlineSchool: function(course) {
-    return model.education.onlineCourses[course].formattedOnlineSchool;
-  },
-  getFormattedOnlineDates: function(course) {
-    return model.education.onlineCourses[course].formattedOnlineDates;
-  },
-  getFormattedOnlineURL: function(course) {
-    return model.education.onlineCourses[course].formattedOnlineURL;
+    view.init.formattedOnlineTitle = HTMLonlineTitle.replace("%data%", model.education.onlineCourses[course].onlineTitle);
+    view.init.formattedOnlineSchool = HTMLonlineSchool.replace("%data%", model.education.onlineCourses[course].onlineSchool);
+    view.init.formattedOnlineDates = HTMLonlineDates.replace("%data%", model.education.onlineCourses[course].onlineDate);
+    view.init.formattedOnlineURL = HTMLonlineURL.replace("%data%", model.education.onlineCourses[course].onlineURL);
   },
   getOnlineSchools: function() {
     return model.education.onlineCourses;
@@ -225,7 +146,33 @@ var controller = {
 
 var view = {
   init: function() {
-    this.displayBIO();
+    var formattedName = '',
+        formattedRole = '',
+        formattedMobile = '',
+        formattedEmail = '',
+        formattedGitHub = '',
+        formattedTwitter = '',
+        formattedLocation = '',
+        formattedBioMessage = '',
+        formattedBioPic = '',
+        formattedEmployer = '',
+        formattedWorkTitle = '',
+        formattedWorkLocation = '',
+        formattedWorkDates = '',
+        formattedWorkDesc = '',
+        formattedProjectTitle = '',
+        formattedProjectDates = '',
+        formattedProjectDesc = '',
+        formattedProjectImage = '',
+        formattedSchoolName = '',
+        formattedSchoolDegree = '',
+        formattedSchoolMajor = '',
+        formattedSchoolLocation = '',
+        formattedSchoolDate = '',
+        formattedOnlineTitle = '',
+        formattedOnlineSchool = '',
+        formattedOnlineDates = '',
+        formattedOnlineURL = '';
     this.displayWork();
     this.displayProjects();
     this.displayEducation();
@@ -233,12 +180,10 @@ var view = {
     this.displayMap();
   },
   displayBIO: function() {
-    controller.formatBIO();
     var numSkills = controller.getSkills().length;
-
-    $("#header").prepend(controller.getFormattedName() + controller.getFormattedRole());
-    $("#topContacts, #footerContacts").append(controller.getFormattedMobile() + controller.getFormattedEmail() + controller.getFormattedGitHub() + controller.getFormattedTwitter() + controller.getFormattedLocation());
-    $("#header").append(controller.getFormattedBioPic() + controller.getFormattedBioMessage());
+    $("#header").prepend(this.init.formattedName + this.init.formattedRole);
+    $("#topContacts, #footerContacts").append(this.init.formattedMobile + this.init.formattedEmail + this.init.formattedGitHub + this.init.formattedTwitter + this.init.formattedLocation);
+    $("#header").append(this.init.formattedBioPic + this.init.formattedBioMessage);
 
     if (numSkills) {
       $("#header").append(HTMLskillsStart);
@@ -248,13 +193,13 @@ var view = {
     }
 
     //Inject links into work hyperlink elements
-    $("span:contains('" + $(controller.getFormattedGitHub()).children('span:last-child').text() + "')").wrapInner('<a></a>');
-    $("a:contains('" + $(controller.getFormattedGitHub()).children('span:last-child').text() + "')").attr({
+    $("span:contains('" + $(this.init.formattedGitHub).children('span:last-child').text() + "')").wrapInner('<a></a>');
+    $("a:contains('" + $(this.init.formattedGitHub).children('span:last-child').text() + "')").attr({
       href: 'https://github.com/arosa81',
       target: '_blank'
     });
-    $("span:contains('" + $(controller.getFormattedTwitter()).children('span:last-child').text() + "')").wrapInner('<a></a>');
-    $("a:contains('" + $(controller.getFormattedTwitter()).children('span:last-child').text() + "')").attr({
+    $("span:contains('" + $(this.init.formattedTwitter).children('span:last-child').text() + "')").wrapInner('<a></a>');
+    $("a:contains('" + $(this.init.formattedTwitter).children('span:last-child').text() + "')").attr({
       href: 'https://twitter.com/AlexJRosa',
       target: '_blank'
     });
@@ -265,7 +210,7 @@ var view = {
       $("#workExperience").append(HTMLworkStart);
       controller.formatWork(job);
       $("#workExperience").append(HTMLworkStart);
-      $(".work-entry:last").append(controller.getFormattedEmployer(job) + controller.getFormattedWorkTitle(job) + controller.getFormattedWorkLocation(job) + controller.getFormattedWorkDates(job) + controller.getFormattedWorkDesc(job));
+      $(".work-entry:last").append(this.init.formattedEmployer + this.init.formattedWorkTitle + this.init.formattedWorkLocation + this.init.formattedWorkDates + this.init.formattedWorkDesc);
 
       //Inject links into work hyperlink elements
       $("a:contains('" + controller.getJobs()[job].employer + " - " + controller.getJobs()[job].title + "')").attr({
@@ -280,7 +225,7 @@ var view = {
       $("#projects").append(HTMLprojectStart);
       controller.formatProjects(proj);
 
-      $(".project-entry:last").append(controller.getFormattedProjectTitle(proj) + "<br>" + controller.getFormattedProjectDates(proj) + "<br>" + controller.getFormattedProjectDesc(proj));
+      $(".project-entry:last").append(this.init.formattedProjectTitle + "<br>" + this.init.formattedProjectDates + "<br>" + this.init.formattedProjectDesc);
 
       //Inject links into work hyperlink elements
       $("a:contains('" + controller.getProjects()[proj].title + "')").attr({
@@ -295,7 +240,7 @@ var view = {
       $("#education").append(HTMLschoolStart);
       controller.formatEducation(school);
 
-      $(".education-entry:last").append(controller.getFormattedSchoolName(school) + controller.getFormattedSchoolDegree(school) + controller.getFormattedSchoolDate(school) + controller.getFormattedSchoolLocation(school) + controller.getFormattedSchoolMajor(school));
+      $(".education-entry:last").append(this.init.formattedSchoolName + this.init.formattedSchoolDegree + this.init.formattedSchoolDate + this.init.formattedSchoolLocation + this.init.formattedSchoolMajor);
 
       switch (controller.getSchools()[school].degree) {
         case "Bachelors of Applied Information Technology":
@@ -322,7 +267,7 @@ var view = {
       $("#education").append(HTMLschoolStart);
       controller.formatOnlineEducation(course);
 
-      $(".education-entry:last").append(controller.getFormattedOnlineTitle(course) + controller.getFormattedOnlineSchool(course) + controller.getFormattedOnlineDates(course) + controller.getFormattedOnlineURL(course));
+      $(".education-entry:last").append(this.init.formattedOnlineTitle + this.init.formattedOnlineSchool + this.init.formattedOnlineDates + this.init.formattedOnlineURL);
 
       //Inject links into education hyperlink elements
       $("a:contains('" + controller.getOnlineSchools()[course].onlineTitle + "')").attr({
@@ -338,7 +283,7 @@ var view = {
   },
   displayMap: function() {
     $("#mapDiv").append(googleMap);
-    console.log(model);
+    console.dir(window);
   }
 };
 
