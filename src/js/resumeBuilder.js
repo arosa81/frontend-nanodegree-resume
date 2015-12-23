@@ -11,7 +11,7 @@ var model = {
     },
     "welcomeMessage": "This is my bio - enjoy!",
     "skills": ["HTML", "CSS", "Javascript", "jQuery", "Business Analysis"],
-    "biopic": "./images/Alex-Thumb.jpg\" alt=\"Bio Pic",
+    "biopic": "./dist/images/Alex-Thumb.jpg\" alt=\"Bio Pic",
   },
   work: {
     "jobs": [
@@ -91,53 +91,53 @@ var controller = {
     view.displayBIO();
   },
   formatBIO: function() {
-    view.init.formattedName = HTMLheaderName.replace("%data%", model.bio.name);
-    view.init.formattedRole = HTMLheaderRole.replace("%data%", model.bio.role);
-    view.init.formattedMobile = HTMLmobile.replace("%data%", model.bio.contacts.mobile);
-    view.init.formattedEmail = HTMLemail.replace("%data%", model.bio.contacts.email);
-    view.init.formattedGitHub = HTMLgithub.replace("%data%", model.bio.contacts.github);
-    view.init.formattedTwitter = HTMLtwitter.replace("%data%", model.bio.contacts.twitter);
-    view.init.formattedLocation = HTMLlocation.replace("%data%", model.bio.contacts.location);
-    view.init.formattedBioMessage = HTMLwelcomeMsg.replace("%data%", "<br>" + model.bio.welcomeMessage);
-    view.init.formattedBioPic = HTMLbioPic.replace("%data%", model.bio.biopic);
+    view.init.formattedName = Helper.HTMLheaderName.replace("%data%", model.bio.name);
+    view.init.formattedRole = Helper.HTMLheaderRole.replace("%data%", model.bio.role);
+    view.init.formattedMobile = Helper.HTMLmobile.replace("%data%", model.bio.contacts.mobile);
+    view.init.formattedEmail = Helper.HTMLemail.replace("%data%", model.bio.contacts.email);
+    view.init.formattedGitHub = Helper.HTMLgithub.replace("%data%", model.bio.contacts.github);
+    view.init.formattedTwitter = Helper.HTMLtwitter.replace("%data%", model.bio.contacts.twitter);
+    view.init.formattedLocation = Helper.HTMLlocation.replace("%data%", model.bio.contacts.location);
+    view.init.formattedBioMessage = Helper.HTMLwelcomeMsg.replace("%data%", "<br>" + model.bio.welcomeMessage);
+    view.init.formattedBioPic = Helper.HTMLbioPic.replace("%data%", model.bio.biopic);
   },
   getSkills: function() {
     return model.bio.skills;
   },
   formatWork: function(job) {
-    view.init.formattedEmployer = HTMLworkEmployer.replace("%data%", model.work.jobs[job].employer);
-    view.init.formattedWorkTitle = HTMLworkTitle.replace("%data%", model.work.jobs[job].title);
-    view.init.formattedWorkLocation = HTMLworkLocation.replace("%data%", model.work.jobs[job].location);
-    view.init.formattedWorkDates = HTMLworkDates.replace("%data%", model.work.jobs[job].dates);
-    view.init.formattedWorkDesc = HTMLworkDescription.replace("%data%", model.work.jobs[job].description);
+    view.init.formattedEmployer = Helper.HTMLworkEmployer.replace("%data%", model.work.jobs[job].employer);
+    view.init.formattedWorkTitle = Helper.HTMLworkTitle.replace("%data%", model.work.jobs[job].title);
+    view.init.formattedWorkLocation = Helper.HTMLworkLocation.replace("%data%", model.work.jobs[job].location);
+    view.init.formattedWorkDates = Helper.HTMLworkDates.replace("%data%", model.work.jobs[job].dates);
+    view.init.formattedWorkDesc = Helper.HTMLworkDescription.replace("%data%", model.work.jobs[job].description);
   },
   getJobs: function() {
     return model.work.jobs;
   },
   formatProjects: function(proj) {
-    view.init.formattedProjectTitle = HTMLprojectTitle.replace("%data%", model.project.projects[proj].title);
-    view.init.formattedProjectDates = HTMLprojectDates.replace("%data%", model.project.projects[proj].dates);
-    view.init.formattedProjectDesc = HTMLprojectDescription.replace("%data%", model.project.projects[proj].description);
-    view.init.formattedProjectImage = HTMLprojectImage.replace("%data%", model.project.projects[proj].images);
+    view.init.formattedProjectTitle = Helper.HTMLprojectTitle.replace("%data%", model.project.projects[proj].title);
+    view.init.formattedProjectDates = Helper.HTMLprojectDates.replace("%data%", model.project.projects[proj].dates);
+    view.init.formattedProjectDesc = Helper.HTMLprojectDescription.replace("%data%", model.project.projects[proj].description);
+    view.init.formattedProjectImage = Helper.HTMLprojectImage.replace("%data%", model.project.projects[proj].images);
   },
   getProjects: function() {
     return model.project.projects;
   },
   formatEducation: function(school) {
-    view.init.formattedSchoolName = HTMLschoolName.replace("%data%", model.education.schools[school].name);
-    view.init.formattedSchoolDegree = HTMLschoolDegree.replace("%data%", model.education.schools[school].degree);
-    view.init.formattedSchoolMajor = HTMLschoolMajor.replace("%data%", model.education.schools[school].majors);
-    view.init.formattedSchoolLocation = HTMLschoolLocation.replace("%data%", model.education.schools[school].location);
-    view.init.formattedSchoolDate = HTMLschoolDates.replace("%data%", model.education.schools[school].dates);
+    view.init.formattedSchoolName = Helper.HTMLschoolName.replace("%data%", model.education.schools[school].name);
+    view.init.formattedSchoolDegree = Helper.HTMLschoolDegree.replace("%data%", model.education.schools[school].degree);
+    view.init.formattedSchoolMajor = Helper.HTMLschoolMajor.replace("%data%", model.education.schools[school].majors);
+    view.init.formattedSchoolLocation = Helper.HTMLschoolLocation.replace("%data%", model.education.schools[school].location);
+    view.init.formattedSchoolDate = Helper.HTMLschoolDates.replace("%data%", model.education.schools[school].dates);
   },
   getSchools: function() {
     return model.education.schools;
   },
   formatOnlineEducation: function(course) {
-    view.init.formattedOnlineTitle = HTMLonlineTitle.replace("%data%", model.education.onlineCourses[course].onlineTitle);
-    view.init.formattedOnlineSchool = HTMLonlineSchool.replace("%data%", model.education.onlineCourses[course].onlineSchool);
-    view.init.formattedOnlineDates = HTMLonlineDates.replace("%data%", model.education.onlineCourses[course].onlineDate);
-    view.init.formattedOnlineURL = HTMLonlineURL.replace("%data%", model.education.onlineCourses[course].onlineURL);
+    view.init.formattedOnlineTitle = Helper.HTMLonlineTitle.replace("%data%", model.education.onlineCourses[course].onlineTitle);
+    view.init.formattedOnlineSchool = Helper.HTMLonlineSchool.replace("%data%", model.education.onlineCourses[course].onlineSchool);
+    view.init.formattedOnlineDates = Helper.HTMLonlineDates.replace("%data%", model.education.onlineCourses[course].onlineDate);
+    view.init.formattedOnlineURL = Helper.HTMLonlineURL.replace("%data%", model.education.onlineCourses[course].onlineURL);
   },
   getOnlineSchools: function() {
     return model.education.onlineCourses;
@@ -186,9 +186,9 @@ var view = {
     $("#header").append(this.init.formattedBioPic + this.init.formattedBioMessage);
 
     if (numSkills) {
-      $("#header").append(HTMLskillsStart);
+      $("#header").append(Helper.HTMLskillsStart);
       for (var i = 0; i < numSkills; i++) {
-        $("#header").append(HTMLskills.replace("%data%", controller.getSkills()[i]));
+        $("#skills").append(Helper.HTMLskills.replace("%data%", controller.getSkills()[i]));
       }
     }
 
@@ -207,9 +207,9 @@ var view = {
   displayWork: function() {
     var totalJobs = controller.getJobs().length;
     for (var job=0; job < totalJobs; job++) {
-      $("#workExperience").append(HTMLworkStart);
+      $("#workExperience").append(Helper.HTMLworkStart);
       controller.formatWork(job);
-      $("#workExperience").append(HTMLworkStart);
+      $("#workExperience").append(Helper.HTMLworkStart);
       $(".work-entry:last").append(this.init.formattedEmployer + this.init.formattedWorkTitle + this.init.formattedWorkLocation + this.init.formattedWorkDates + this.init.formattedWorkDesc);
 
       //Inject links into work hyperlink elements
@@ -222,7 +222,7 @@ var view = {
   displayProjects: function() {
     var totalProjects = controller.getProjects().length;
     for (var proj = 0; proj < totalProjects; proj++) {
-      $("#projects").append(HTMLprojectStart);
+      $("#projects").append(Helper.HTMLprojectStart);
       controller.formatProjects(proj);
 
       $(".project-entry:last").append(this.init.formattedProjectTitle + "<br>" + this.init.formattedProjectDates + "<br>" + this.init.formattedProjectDesc);
@@ -237,7 +237,7 @@ var view = {
   displayEducation: function() {
     var totalSchools = controller.getSchools().length;
     for (var school = 0; school < totalSchools; school++) {
-      $("#education").append(HTMLschoolStart);
+      $("#education").append(Helper.HTMLschoolStart);
       controller.formatEducation(school);
 
       $(".education-entry:last").append(this.init.formattedSchoolName + this.init.formattedSchoolDegree + this.init.formattedSchoolDate + this.init.formattedSchoolLocation + this.init.formattedSchoolMajor);
@@ -263,8 +263,8 @@ var view = {
   displayOnlineEducation: function() {
     var totalOnlineCourses = controller.getOnlineSchools().length;
     for (var course = 0; course < totalOnlineCourses; course++) {
-      $("#education").append(HTMLonlineClasses);
-      $("#education").append(HTMLschoolStart);
+      $("#education").append(Helper.HTMLonlineClasses);
+      $("#education").append(Helper.HTMLschoolStart);
       controller.formatOnlineEducation(course);
 
       $(".education-entry:last").append(this.init.formattedOnlineTitle + this.init.formattedOnlineSchool + this.init.formattedOnlineDates + this.init.formattedOnlineURL);
@@ -282,8 +282,7 @@ var view = {
     }
   },
   displayMap: function() {
-    $("#mapDiv").append(googleMap);
-    console.dir(window);
+    $("#mapDiv").append(Helper.googleMap);
   }
 };
 

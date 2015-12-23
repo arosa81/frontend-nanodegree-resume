@@ -14,8 +14,8 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       // build: {
-      //   src: './js/<%= pkg.name %>.js',
-      //   dest: './js/<%= pkg.name %>.min.js'
+      //   src: './src/js/<%= pkg.name %>.js',
+      //   dest: './dist/js/<%= pkg.name %>.min.js'
       // },
       dynamic_mapping: {
         // Grunt will search for "**/*.js" under "lib/" when the "uglify" task
@@ -24,9 +24,9 @@ module.exports = function(grunt) {
       files: [
         {
           expand: true,     // Enable dynamic expansion.
-          cwd: 'js/',      // Src matches are relative to this path.
+          cwd: 'src/js/',      // Src matches are relative to this path.
           src: ['**/*.js'], // Actual pattern(s) to match.
-          dest: 'js/',   // Destination path prefix.
+          dest: 'dist/js/',   // Destination path prefix.
           ext: '.min.js',   // Dest filepaths will have this extension.
           extDot: 'first'   // Extensions in filenames begin after the first dot
         },
@@ -37,9 +37,9 @@ module.exports = function(grunt) {
       target: {
         files: [{
           expand: true,
-          cwd: 'css/',
+          cwd: 'src/css/',
           src: ['*.css', '!*.min.css'],
-          dest: 'css/',
+          dest: 'dist/css/',
           ext: '.min.css'
         }]
       }
@@ -68,8 +68,8 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           src: ['*.{gif,jpg,png}'],
-          cwd: 'images_src/',
-          dest: 'images/'
+          cwd: 'src/images/',
+          dest: 'dist/images/'
         }]
       }
     },
@@ -95,8 +95,8 @@ module.exports = function(grunt) {
       dev: {
         files: [{
           expand: true,
-          src: 'images_src/fixed/*.{gif,jpg,png}',
-          dest: 'images/'
+          src: 'src/images/fixed/*.{gif,jpg,png}',
+          dest: 'dist/images/'
         }]
       },
     },
