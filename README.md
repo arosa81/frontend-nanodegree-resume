@@ -15,4 +15,4 @@ The resume has four distinct sections: work, education, projects and a header wi
   1. Manipulates the model for correct text replacement and formatting
   1. Communicates with the View for updated display of resume sections
 
-**Note:** Please view the **dist** folder for readable source code
+**Note:** Please view the **src** folder for readable source code
