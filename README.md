@@ -2,6 +2,8 @@
 
 Using jQuery, developed an interactive resume application that reads all data from a JSON file and then dynamically modifies the DOM to display the information. Further customized the project by personalizing the design using CSS.
 
+A [live demo of this resume can be found here](https://arosa81.github.io/).
+
 ### The process I followed:
 The resume has four distinct sections: work, education, projects and a header with biographical information.
 
